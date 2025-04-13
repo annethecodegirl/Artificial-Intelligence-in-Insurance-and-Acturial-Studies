@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 
 # Title of the app
 st.title("🧮 Interactive Insurance Premium Calculator")
@@ -44,16 +43,8 @@ df = pd.DataFrame({
     'Premium': premiums
 })
 
-# Plot
-fig, ax = plt.subplots()
-ax.plot(df['Age'], df['Premium'], linewidth=2)
-ax.set_xlabel('Age')
-ax.set_ylabel('Premium ($)')
-ax.set_title('Insurance Premium vs Age')
-ax.grid(True)
-
-# Display the plot in Streamlit
-st.pyplot(fig)
+# Plot using Streamlit's built-in chart
+st.line_chart(df.set_index('Age'))
 
 # Fun Tip
 st.info("💡 Tip: Buying insurance when you're young and healthy saves you a lot of money over time!")
